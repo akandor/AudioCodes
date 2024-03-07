@@ -79,7 +79,7 @@ fi
 fullini=$(curl -s -X GET --user ${username}:${password} http://${ipAdress}/api/v1/files/cliScript)
 
 # Extract IP address using grep and awk
-rawTargetIPString=$(echo "$fullini" | grep -oE 'target-ip-address "([0-9]{1,3}\.){3}[0-9]{1,3}"' | head -1 | awk '{print $2}')
+rawTargetIPString=$(echo "$fullini" | tr -d '\n\r' | grep -oE "nat-translation ${natIndex}    src-interface-name \"${sourceInterface}\"    target-ip-address \"([0-9]{1,3}\.){3}[0-9]{1,3}\"" | head -1 | awk '{print $6}')
 targetIPString="${rawTargetIPString//\"}"
 
 # Check if the IPs are different
