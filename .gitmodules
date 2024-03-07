@@ -1,0 +1,3 @@
+[submodule "library/Posh-ACME"]
+	path = library/Posh-ACME
+	url = https://github.com/rmbolger/Posh-ACME.git
